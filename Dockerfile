@@ -5,6 +5,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /parcel-tracker
 
+
 FROM alpine:3.23.4
 WORKDIR /app
 COPY --from=builder /parcel-tracker .
