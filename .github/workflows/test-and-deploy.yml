@@ -3,6 +3,9 @@ name: Final-pipeline
 on:
   pull_request:
     branches: [ "main" ]
+  push:
+    tags:
+      -'v*'
 
 jobs:
   test:
@@ -22,6 +25,7 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: test
+    if: startsWith(github.ref, 'refs/tags')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
