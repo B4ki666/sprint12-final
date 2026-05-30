@@ -5,7 +5,10 @@ on:
     branches: [ "main" ]
   push:
     tags:
+ feature
       - 'v*'
+      - 'v*'
+main
 
 jobs:
   test:
